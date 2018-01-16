@@ -50,12 +50,12 @@ ENV TOOL_NODE_FLAGS $TOOL_NODE_FLAGS
 RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
 
 # install all dependencies
-RUN $BUILD_SCRIPTS_DIR/install-deps.sh && \
-  $BUILD_SCRIPTS_DIR/install-node.sh && \
-  $BUILD_SCRIPTS_DIR/install-phantom.sh && \
-  $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh && \
-  $BUILD_SCRIPTS_DIR/install-mongo.sh && \
-  $BUILD_SCRIPTS_DIR/install-meteor.sh
+RUN $BUILD_SCRIPTS_DIR/install-deps.sh
+RUN $BUILD_SCRIPTS_DIR/install-node.sh
+RUN $BUILD_SCRIPTS_DIR/install-phantom.sh
+RUN $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh
+RUN $BUILD_SCRIPTS_DIR/install-mongo.sh
+RUN $BUILD_SCRIPTS_DIR/install-meteor.sh
 
 # copy the app to the container
 ONBUILD COPY . $APP_SOURCE_DIR
